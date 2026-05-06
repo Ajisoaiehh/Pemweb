@@ -86,7 +86,7 @@
             </a>
             <div class="d-flex align-items-center">
                 <span class="text-white me-3">
-                    <i class="fas fa-user"></i> {{ session('user') ? session('user')['NAMA'] : 'Guest' }}
+                    <i class="fas fa-user"></i> {{ session('user')['NAMA'] ?? 'Guest' }}
                 </span>
                 <form method="POST" action="{{ route('logout') }}" class="d-inline">
                     @csrf
@@ -106,7 +106,7 @@
                     <div class="card-body text-center">
                         <i class="fas fa-wallet fa-3x mb-3"></i>
                         <h5>Saldo Anda</h5>
-                        <h3 id="saldo">Rp {{ number_format(session('user') ? session('user')['SALDO'] : 0, 0, ',', '.') }}</h3>
+                        <h3 id="saldo">Rp {{ number_format(session('user')['SALDO'] ?? 0, 0, ',', '.') }}</h3>
                         <button class="btn btn-light btn-custom" onclick="topUpSaldo()">
                             <i class="fas fa-plus"></i> Top-Up
                         </button>
@@ -304,8 +304,8 @@
     </div>
 
     <script>
-        let userId = {{ session('user') ? session('user')['ID_PENGGUNA'] : 'null' }};
-        let userSaldo = {{ session('user') ? session('user')['SALDO'] : 0 }};
+        let userId = {{ session('user')['ID_PENGGUNA'] ?? 'null' }};
+        let userSaldo = {{ session('user')['SALDO'] ?? 0 }};
         let qrCodeData = '';
         let currentParkingId = null;
         let notifications = [];
