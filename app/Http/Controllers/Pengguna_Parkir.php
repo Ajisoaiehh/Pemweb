@@ -87,7 +87,7 @@ class Pengguna_Parkir extends Controller
             'SALDO' => 0,
         ]);
 
-        Session::put('user', $pengguna);
+        Session::put('user', $pengguna->toArray());
 
         return redirect()->route('user.dashboard')->with('success', 'Registrasi berhasil!');
     }
@@ -102,7 +102,7 @@ class Pengguna_Parkir extends Controller
         $pengguna = PenggunaParkirModel::where('EMAIL', $data['email'])->first();
 
         if ($pengguna && Hash::check($data['password'], $pengguna->PASSWORD)) {
-            Session::put('user', $pengguna);
+            Session::put('user', $pengguna->toArray());
             return redirect()->route('user.dashboard')->with('success', 'Login berhasil!');
         }
 
@@ -128,14 +128,14 @@ class Pengguna_Parkir extends Controller
             'email' => 'required|email|unique:pengguna_parkir,EMAIL,' . $user->ID_PENGGUNA . ',ID_PENGGUNA',
         ]);
 
-        $pengguna = PenggunaParkirModel::findOrFail($user->ID_PENGGUNA);
+        $pengguna = PenggunaParkirModel::findOrFail($user['ID_PENGGUNA']);
         $pengguna->update([
             'NAMA' => $data['nama'],
             'NO_HP' => $data['no_hp'],
             'EMAIL' => $data['email'],
         ]);
 
-        Session::put('user', $pengguna);
+        Session::put('user', $pengguna->toArray());
 
         return back()->with('success', 'Profil berhasil diperbarui!');
     }

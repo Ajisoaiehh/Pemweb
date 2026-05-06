@@ -10,6 +10,7 @@ class Gerbang extends Model
     protected $primaryKey = 'ID_GERBANG';
     public $incrementing = false;
     protected $keyType = 'int';
+    public $timestamps = false;
 
     protected $fillable = [
         'ID_QR',

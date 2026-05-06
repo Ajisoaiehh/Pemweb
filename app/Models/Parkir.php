@@ -10,6 +10,7 @@ class Parkir extends Model
     protected $primaryKey = 'ID_PARKIR';
     public $incrementing = false;
     protected $keyType = 'int';
+    public $timestamps = false;
 
     protected $fillable = [
         'PAR_ID_PARKIR',

@@ -10,6 +10,7 @@ class Pembayaran extends Model
     protected $primaryKey = 'ID_PEMBAYARAN';
     public $incrementing = false;
     protected $keyType = 'int';
+    public $timestamps = false;
 
     protected $fillable = [
         'ID_PARKIR',

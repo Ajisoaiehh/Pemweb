@@ -10,6 +10,7 @@ class Pengguna_Parkir extends Model
     protected $primaryKey = 'ID_PENGGUNA';
     public $incrementing = false;
     protected $keyType = 'int';
+    public $timestamps = false;
 
     protected $fillable = [
         'NAMA',

@@ -10,6 +10,7 @@ class Kendaraan extends Model
     protected $primaryKey = 'NO_PLAT';
     public $incrementing = false;
     protected $keyType = 'string';
+    public $timestamps = false;
 
     protected $fillable = [
         'ID_PENGGUNA',

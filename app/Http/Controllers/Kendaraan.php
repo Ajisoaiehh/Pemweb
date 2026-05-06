@@ -55,4 +55,18 @@ class Kendaraan extends Controller
 
         return response()->noContent();
     }
+
+    public function getUserVehicles(Request $request)
+    {
+        $userId = session('user')['ID_PENGGUNA'] ?? null;
+        if (!$userId) {
+            return response()->json(['error' => 'User not authenticated'], 401);
+        }
+
+        $vehicles = KendaraanModel::where('ID_PENGGUNA', $userId)
+            ->with(['qrCode'])
+            ->get();
+
+        return response()->json($vehicles);
+    }
 }

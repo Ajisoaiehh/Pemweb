@@ -15,11 +15,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Skip default user creation to avoid conflicts
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Seed custom parking system data
+        $this->call([
+            GerbangSeeder::class,
+            Pengguna_ParkirSeeder::class,
+            KendaraanSeeder::class,
+            QR_CodeSeeder::class,
+            ParkirSeeder::class,
+            PembayaranSeeder::class,
         ]);
     }
 }

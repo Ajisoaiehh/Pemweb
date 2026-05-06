@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('NO_PLAT', 15)->nullable();
             $table->integer('ID_PENGGUNA')->nullable();
             $table->datetime('WAKTU_MASUK');
-            $table->datetime('WAKTU_KELUAR');
+            $table->datetime('WAKTU_KELUAR')->nullable();
             $table->decimal('BIAYA', 12, 2);
             $table->string('STATUS_PARKIR', 20);
         });

@@ -10,6 +10,7 @@ class QR_Code extends Model
     protected $primaryKey = 'ID_QR';
     public $incrementing = false;
     protected $keyType = 'int';
+    public $timestamps = false;
 
     protected $fillable = [
         'NO_PLAT',

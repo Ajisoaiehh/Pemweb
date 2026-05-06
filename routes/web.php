@@ -49,6 +49,17 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
         return view('user.parking-history');
     })->name('parking.history');
 
+    // Parking History API
+    Route::get('/parking-history-data', [Parkir::class, 'getUserHistory'])->name('parking.history.data');
+
+    // Vehicle Management API
+    Route::get('/kendaraan-data', [Kendaraan::class, 'getUserVehicles'])->name('kendaraan.data');
+
+    // API endpoints for dashboard
+    Route::get('/parkir', [Parkir::class, 'index'])->name('parkir.index');
+    Route::get('/kendaraan', [Kendaraan::class, 'getUserVehicles'])->name('kendaraan.index');
+    Route::get('/parking-history', [Parkir::class, 'getUserHistory'])->name('parking.history.api');
+
     // Payment History
     Route::get('/payment-history', function () {
         return view('user.payment-history');
